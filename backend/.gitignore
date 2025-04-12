@@ -2,5 +2,5 @@
 venv/
 
 # Ignore the .env directory
-.env/
+.env
 
