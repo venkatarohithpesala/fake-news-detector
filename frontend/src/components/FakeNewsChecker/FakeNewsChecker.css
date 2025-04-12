@@ -1,0 +1,230 @@
+/* Base styles and variables */
+:root {
+  --primary: #6a1b9a;
+  --primary-light: #9c4dcc;
+  --primary-dark: #38006b;
+  --secondary: #f5f5f5;
+  --text: #333333;
+  --error: #d32f2f;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 20px;
+  background-attachment: fixed;
+}
+
+/* Main container */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-image: radial-gradient(circle at top right, rgba(106, 27, 154, 0.05), transparent 400px),
+    radial-gradient(circle at bottom left, rgba(156, 77, 204, 0.05), transparent 400px);
+}
+
+@media (max-width: 850px) {
+  .container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Top right button */
+.top-right-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: rgba(106, 27, 154, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(106, 27, 154, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-right-button:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  resize: vertical;
+  transition: var(--transition);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+  background-color: white;
+}
+
+.button {
+  align-self: flex-start;
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(106, 27, 154, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.button:hover:not(:disabled):before {
+  left: 100%;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(106, 27, 154, 0.4);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  background: #ce93d8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Error message */
+.error {
+  color: var(--error);
+  background-color: rgba(211, 47, 47, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  border-left: 3px solid var(--error);
+}
+
+/* Result box */
+.resultBox {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(to right bottom, #f3e5f5, #fff);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  animation: fadeIn 0.5s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.resultBox h3 {
+  color: var(--primary-dark);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resultBox p {
+  color: #424242;
+  line-height: 1.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 600px) {
+  .button {
+    width: 100%;
+  }
+
+  .top-right-button {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 1rem;
+    align-self: flex-end;
+    display: inline-block;
+  }
+
+  .container {
+    padding: 1.25rem;
+  }
+
+  body {
+    padding: 10px;
+  }
+}
+
+/* Add a title to the page */
+.container:before {
+  content: "Fake News Detector";
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(106, 27, 154, 0.1);
+}

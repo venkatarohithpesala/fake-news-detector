@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./FakeNewsChecker.css";
 
 const FakeNewsChecker = () => {
@@ -6,6 +7,7 @@ const FakeNewsChecker = () => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +39,13 @@ const FakeNewsChecker = () => {
   return (
     <div className="container">
 
+      <button
+        onClick={() => navigate('/explore')}
+        className="top-right-button"
+      >
+        🔍 Explore Previous Questions
+      </button>
+
       <form onSubmit={handleSubmit} className="form">
         <textarea
           className="textarea"
@@ -58,6 +67,8 @@ const FakeNewsChecker = () => {
           <p>{result.explanation}</p>
         </div>
       )}
+
+
     </div>
   );
 };
