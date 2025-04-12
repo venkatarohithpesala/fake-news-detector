@@ -1,0 +1,6 @@
+# Ignore the virtual environment directory
+venv/
+
+# Ignore the .env directory
+.env/
+
