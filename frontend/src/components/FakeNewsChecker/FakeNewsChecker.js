@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./FakeNewsChecker.css";
 
 const FakeNewsChecker = () => {
@@ -38,11 +38,7 @@ const FakeNewsChecker = () => {
 
   return (
     <div className="container">
-
-      <button
-        onClick={() => navigate('/explore')}
-        className="top-right-button"
-      >
+      <button onClick={() => navigate("/explore")} className="top-right-button">
         🔍 Explore Previous Questions
       </button>
 
@@ -67,8 +63,6 @@ const FakeNewsChecker = () => {
           <p>{result.explanation}</p>
         </div>
       )}
-
-
     </div>
   );
 };

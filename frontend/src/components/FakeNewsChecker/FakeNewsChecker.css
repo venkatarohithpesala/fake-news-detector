@@ -219,7 +219,7 @@ body {
 
 /* Add a title to the page */
 .container:before {
-  content: "Fake News Detector";
+  content: "NewsTrustAi";
   display: block;
   font-size: 1.8rem;
   font-weight: 700;
